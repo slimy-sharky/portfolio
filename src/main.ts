@@ -1,4 +1,10 @@
 import './style.css';
+import stickySlimeMixUrl from './assets/sticky_slime_mix.webp';
+
+const stickySlimeMixImages = document.querySelectorAll<HTMLImageElement>('.sticky-slime-mix');
+stickySlimeMixImages.forEach(image  => {
+  image.src = stickySlimeMixUrl;
+})
 
 const PASSWORD = import.meta.env.VITE_PRODUCT_PASSWORD;
 

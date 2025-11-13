@@ -28,7 +28,7 @@
     </section>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border-4 border-cyan-200">
-        <img src="/images/ocean-blue-slime.jpg" alt="トリモチスライムの素 v0.1.0 5L" class="w-full h-64 object-contain">
+        <img class="sticky-slime-mix" alt="トリモチスライムの素 v0.1.0 5L" class="w-full object-contain">
         <div class="p-6">
           <h3 class="text-xl font-bold text-blue-800 mb-2">トリモチスライムの素 v0.1.0 5L</h3>
           <p class="text-gray-600 mb-4">「ネバネバ、もちもち、ふわふわ」なスライムを作るための材料</p>
@@ -38,9 +38,13 @@
           </div>
         </div>
       </div>
-
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border-4 border-cyan-200">
-        <img src="/images/glitter-shark-slime.jpg" alt="トリモチスライムの素 v0.1.0 10L" class="w-full h-64 object-contain">
+        <div class="relative">
+          <img class="sticky-slime-mix" alt="トリモチスライムの素 v0.1.0 10L" class="w-full object-contain">
+          <div class="absolute top-4 right-4 w-16 h-16 bg-linear-to-br from-cyan-600/80 to-blue-800/80 text-white rounded-full font-bold text-xl shadow-lg flex items-center justify-center backdrop-blur-sm">
+            x2
+          </div>
+        </div>
         <div class="p-6">
           <h3 class="text-xl font-bold text-blue-800 mb-2">トリモチスライムの素 v0.1.0 10L</h3>
           <p class="text-gray-600 mb-4">「ネバネバ、もちもち、ふわふわ」なスライムを作るための材料</p>
@@ -51,9 +55,7 @@
         </div>
       </div>
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden opacity-60 border-4 border-gray-300">
-        <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
-          <img src="/Microsoft-Fluentui-Emoji-3d-Shark-3d.512.png" alt="サメのアイコン" class="w-full h-64 object-contain">
-        </div>
+        <img src="/Microsoft-Fluentui-Emoji-3d-Shark-3d.512.png" alt="サメのアイコン" class="w-full object-contain">
         <div class="p-6">
           <h3 class="text-xl font-bold text-gray-600 mb-2">準備中</h3>
           <p class="text-gray-500 mb-4">今後増えるかも…？</p>
@@ -126,7 +128,6 @@
               </div>
             </div>
           </div>
-
           <div class="bg-blue-900 bg-opacity-30 rounded-lg p-4">
             <h4 class="font-bold text-cyan-300 mb-3 text-base">返品・キャンセルについて</h4>
             <div class="space-y-3">
