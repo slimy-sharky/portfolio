@@ -41,17 +41,45 @@ form.addEventListener('submit', async (e: Event) => {
   submitButton.disabled = true;
   submitButton.textContent = '送信中...';
 
-  const productElement = document.getElementById('product');
-  if (!(productElement instanceof HTMLSelectElement)) {
-    throw new Error('Product element not found');
+  const improvementsCheckboxes = document.querySelectorAll('input[name="improvements"]:checked');
+  const selectedImprovements = Array.from(improvementsCheckboxes).map(
+    (checkbox) => (checkbox as HTMLInputElement).value
+  );
+
+  if (selectedImprovements.length > 3) {
+    result.classList.remove('hidden');
+    result.innerHTML = `
+      <div class="bg-red-50 border-2 border-red-400 rounded-lg p-6">
+        <p class="text-red-800 font-bold text-center">改善要望は最大3つまで選択できます。</p>
+      </div>
+    `;
+    submitButton.disabled = false;
+    submitButton.textContent = '送信する';
+    return;
+  }
+
+  if (selectedImprovements.length === 0) {
+    result.classList.remove('hidden');
+    result.innerHTML = `
+      <div class="bg-red-50 border-2 border-red-400 rounded-lg p-6">
+        <p class="text-red-800 font-bold text-center">改善要望を少なくとも1つ選択してください。</p>
+      </div>
+    `;
+    submitButton.disabled = false;
+    submitButton.textContent = '送信する';
+    return;
   }
 
   const formData: SurveyFormData = {
-    name: (document.getElementById('name') as HTMLInputElement).value,
     email: (document.getElementById('email') as HTMLInputElement).value,
-    product: productElement.value,
-    rating: (document.querySelector('input[name="rating"]:checked') as HTMLInputElement)?.value || '',
-    message: (document.getElementById('message') as HTMLTextAreaElement).value,
+    sticky: (document.querySelector('input[name="sticky"]:checked') as HTMLInputElement)?.value || '',
+    chewy: (document.querySelector('input[name="chewy"]:checked') as HTMLInputElement)?.value || '',
+    fluffy: (document.querySelector('input[name="fluffy"]:checked') as HTMLInputElement)?.value || '',
+    lumpFree: (document.querySelector('input[name="lumpFree"]:checked') as HTMLInputElement)?.value || '',
+    affordable: (document.querySelector('input[name="affordable"]:checked') as HTMLInputElement)?.value || '',
+    easyToMake: (document.querySelector('input[name="easyToMake"]:checked') as HTMLInputElement)?.value || '',
+    improvements: selectedImprovements,
+    otherComments: (document.getElementById('otherComments') as HTMLTextAreaElement).value,
   };
 
   try {

@@ -1,9 +1,13 @@
 interface FormData {
-  name?: string;
-  email?: string;
-  product?: string;
-  rating?: number;
-  message?: string;
+  email: string;
+  sticky: string;
+  chewy: string;
+  fluffy: string;
+  lumpFree: string;
+  affordable: string;
+  easyToMake: string;
+  improvements: string[];
+  otherComments?: string;
 }
 
 async function getAccessToken(env: Env): Promise<string> {
@@ -70,15 +74,19 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const timestamp = new Date().toISOString();
     const values = [[
       timestamp,
-      formData.name || '',
       formData.email || '',
-      formData.product || '',
-      formData.rating || '',
-      formData.message || '',
+      formData.sticky || '',
+      formData.chewy || '',
+      formData.fluffy || '',
+      formData.lumpFree || '',
+      formData.affordable || '',
+      formData.easyToMake || '',
+      formData.improvements?.join(', ') || '',
+      formData.otherComments || '',
     ]];
 
     const response = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${env.SPREADSHEET_ID}/values/A:F:append?valueInputOption=USER_ENTERED`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${env.SPREADSHEET_ID}/values/A:J:append?valueInputOption=USER_ENTERED`,
       {
         method: 'POST',
         headers: {

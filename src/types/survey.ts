@@ -1,9 +1,13 @@
 export interface SurveyFormData {
-  name: string;
   email: string;
-  product: string;
-  rating: string;
-  message: string;
+  sticky: string;
+  chewy: string;
+  fluffy: string;
+  lumpFree: string;
+  affordable: string;
+  easyToMake: string;
+  improvements: string[];
+  otherComments: string;
 }
 
 export interface SurveyResponse {
