@@ -11,6 +11,7 @@ export default defineConfig({
         main: 'index.html',
         terms: 'terms/index.html',
         privacy: 'privacy/index.html',
+        survey: 'survey/index.html',
       }
     }
   }
