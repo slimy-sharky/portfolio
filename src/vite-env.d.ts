@@ -1,5 +1,5 @@
 interface ImportMetaEnv {
-  readonly VITE_PRODUCT_PASSWORD: string
+
 }
 
 interface ImportMeta {
