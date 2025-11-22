@@ -6,9 +6,9 @@ import howToMakeStickySlime4Url from './assets/how_to_make_sticky_slime_4.webp';
 import type { SurveyFormData, SurveyResponse } from './types/survey';
 
 const stickySlimeMixImages = document.querySelectorAll<HTMLImageElement>('.sticky-slime-mix');
-stickySlimeMixImages.forEach(image  => {
+stickySlimeMixImages.forEach(image => {
   image.src = stickySlimeMixUrl;
-})
+});
 
 const howToMakeStickySlime1Image = document.getElementById('how-to-make-sticky-slime-1') as HTMLImageElement;
 if (howToMakeStickySlime1Image !== null) {
@@ -41,10 +41,15 @@ form.addEventListener('submit', async (e: Event) => {
   submitButton.disabled = true;
   submitButton.textContent = '送信中...';
 
+  const productElement = document.getElementById('product');
+  if (!(productElement instanceof HTMLSelectElement)) {
+    throw new Error('Product element not found');
+  }
+
   const formData: SurveyFormData = {
     name: (document.getElementById('name') as HTMLInputElement).value,
     email: (document.getElementById('email') as HTMLInputElement).value,
-    product: (document.getElementById('product') as HTMLSelectElement).value,
+    product: productElement.value,
     rating: (document.querySelector('input[name="rating"]:checked') as HTMLInputElement)?.value || '',
     message: (document.getElementById('message') as HTMLTextAreaElement).value,
   };
