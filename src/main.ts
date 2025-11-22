@@ -1,4 +1,3 @@
-import './style.css';
 import stickySlimeMixUrl from './assets/sticky_slime_mix.webp';
 import howToMakeStickySlime1Url from './assets/how_to_make_sticky_slime_1.webp';
 import howToMakeStickySlime2Url from './assets/how_to_make_sticky_slime_2.webp';
