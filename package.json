@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "wrangler pages dev dist",
-    "wrangler:deploy": "wrangler pages deploy dist --project-name=portfolio"
+    "deploy": "wrangler pages deploy dist"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251121.0",
