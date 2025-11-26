@@ -17,15 +17,16 @@
   <link rel="icon" type="image/png" href="/Microsoft-Fluentui-Emoji-3d-Shark-3d.32.png">
   <link href="/src/style.css" rel="stylesheet">
 </head>
-<body class="bg-linear-to-b from-cyan-50 to-blue-100 min-h-screen">
-  <header class="bg-linear-to-r from-cyan-600 to-blue-700 text-white shadow-lg sticky top-0 z-50">
+<body class="min-h-screen">
+  <canvas id="ocean-canvas"></canvas>
+  <header class="bg-linear-to-r from-cyan-600 to-blue-700 text-white shadow-lg">
     <div class="container mx-auto px-4 py-6">
       <h1 class="text-3xl md:text-4xl font-bold text-center">Sharky's Cove 🦈</h1>
     </div>
   </header>
   <main class="container mx-auto px-4 py-12">
     <section class="mb-12 text-center">
-      <h2 class="text-3xl font-bold text-blue-800 mb-4">商品一覧</h2>
+      <h2 class="text-3xl font-bold text-white mb-4">商品一覧</h2>
     </section>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border-4 border-cyan-200">
@@ -67,7 +68,7 @@
       </div>
     </div>
     <section class="mb-12">
-      <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">トリモチスライムの作り方</h2>
+      <h2 class="text-3xl font-bold text-white mb-8 text-center">トリモチスライムの作り方</h2>
       <div class="max-w-4xl mx-auto space-y-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-4 border-cyan-200">
           <div class="bg-linear-to-r from-cyan-600 to-blue-700 text-white px-6 py-4">
@@ -131,7 +132,7 @@
       </div>
     </section>
     <section class="mb-12">
-      <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">トリモチスライムの片付け方</h2>
+      <h2 class="text-3xl font-bold text-white mb-8 text-center">トリモチスライムの片付け方</h2>
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-2xl shadow-xl p-8 border-4 border-cyan-200">
           <div class="space-y-6 text-gray-700">
@@ -154,7 +155,7 @@
       </div>
     </section>
     <section class="mb-12">
-      <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">よくある質問</h2>
+      <h2 class="text-3xl font-bold text-white mb-8 text-center">よくある質問</h2>
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-4 border-cyan-200">
           <div class="bg-linear-to-r from-cyan-600 to-blue-700 text-white px-6 py-4">
@@ -212,6 +213,7 @@
       </div>
     </div>
   </footer>
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/javascripts/main.ts"></script>
+  <script type="module" src="/src/javascripts/canvas.ts"></script>
 </body>
 </html>
