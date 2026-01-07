@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url('/fonts/fredoka-variable.woff2') format('woff2-variations');
+}
+
 #ocean-canvas {
   position: fixed;
   top: 0;
