@@ -1,12 +1,14 @@
 interface FormData {
   email: string;
-  sticky: string;
-  chewy: string;
-  fluffy: string;
-  lumpFree: string;
   affordable: string;
+  cleanup: string;
+  sticky: string;
+  stretchiness: string;
+  skinIrritation: string;
   easyToMake: string;
+  storageStability: string;
   improvements: string[];
+  otherImprovement?: string;
   otherComments?: string;
 }
 
@@ -75,18 +77,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const values = [[
       timestamp,
       formData.email || '',
-      formData.sticky || '',
-      formData.chewy || '',
-      formData.fluffy || '',
-      formData.lumpFree || '',
       formData.affordable || '',
+      formData.cleanup || '',
+      formData.sticky || '',
+      formData.stretchiness || '',
+      formData.skinIrritation || '',
       formData.easyToMake || '',
+      formData.storageStability || '',
       formData.improvements?.join(', ') || '',
+      formData.otherImprovement || '',
       formData.otherComments || '',
     ]];
 
     const response = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${env.SPREADSHEET_ID}/values/A:J:append?valueInputOption=USER_ENTERED`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${env.SPREADSHEET_ID}/values/A:L:append?valueInputOption=USER_ENTERED`,
       {
         method: 'POST',
         headers: {

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     tailwindcss(),
   ],
@@ -14,5 +14,13 @@ export default defineConfig({
         survey: 'survey/index.html',
       }
     }
+  },
+  server: {
+    proxy: mode === 'development' ? {
+      '/api': {
+        target: 'http://localhost:8788',
+        changeOrigin: true,
+      }
+    } : undefined
   }
-})
+}))

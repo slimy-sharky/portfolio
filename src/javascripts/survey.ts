@@ -2,6 +2,17 @@ import type { SurveyFormData, SurveyResponse } from '../types/survey';
 
 const form = document.getElementById('surveyForm') as HTMLFormElement;
 const result = document.getElementById('result') as HTMLDivElement;
+const improvementOtherCheckbox = document.getElementById('improvementOther') as HTMLInputElement;
+const otherImprovementContainer = document.getElementById('otherImprovementContainer') as HTMLDivElement;
+
+improvementOtherCheckbox.addEventListener('change', () => {
+  if (improvementOtherCheckbox.checked) {
+    otherImprovementContainer.classList.remove('hidden');
+  } else {
+    otherImprovementContainer.classList.add('hidden');
+    (document.getElementById('otherImprovement') as HTMLInputElement).value = '';
+  }
+});
 
 form.addEventListener('submit', async (e: Event) => {
   e.preventDefault();
@@ -39,15 +50,32 @@ form.addEventListener('submit', async (e: Event) => {
     return;
   }
 
+  if (selectedImprovements.includes('その他')) {
+    const otherImprovementInput = document.getElementById('otherImprovement') as HTMLInputElement;
+    if (!otherImprovementInput.value.trim()) {
+      result.classList.remove('hidden');
+      result.innerHTML = `
+        <div class="bg-red-50 border-2 border-red-400 rounded-lg p-6">
+          <p class="text-red-800 font-bold text-center">「その他」を選択した場合は、改善要望を入力してください。</p>
+        </div>
+      `;
+      submitButton.disabled = false;
+      submitButton.textContent = '送信する';
+      return;
+    }
+  }
+
   const formData: SurveyFormData = {
     email: (document.getElementById('email') as HTMLInputElement).value,
-    sticky: (document.querySelector('input[name="sticky"]:checked') as HTMLInputElement)?.value || '',
-    chewy: (document.querySelector('input[name="chewy"]:checked') as HTMLInputElement)?.value || '',
-    fluffy: (document.querySelector('input[name="fluffy"]:checked') as HTMLInputElement)?.value || '',
-    lumpFree: (document.querySelector('input[name="lumpFree"]:checked') as HTMLInputElement)?.value || '',
     affordable: (document.querySelector('input[name="affordable"]:checked') as HTMLInputElement)?.value || '',
+    cleanup: (document.querySelector('input[name="cleanup"]:checked') as HTMLInputElement)?.value || '',
+    sticky: (document.querySelector('input[name="sticky"]:checked') as HTMLInputElement)?.value || '',
+    stretchiness: (document.querySelector('input[name="stretchiness"]:checked') as HTMLInputElement)?.value || '',
+    skinIrritation: (document.querySelector('input[name="skinIrritation"]:checked') as HTMLInputElement)?.value || '',
     easyToMake: (document.querySelector('input[name="easyToMake"]:checked') as HTMLInputElement)?.value || '',
+    storageStability: (document.querySelector('input[name="storageStability"]:checked') as HTMLInputElement)?.value || '',
     improvements: selectedImprovements,
+    otherImprovement: (document.getElementById('otherImprovement') as HTMLInputElement).value,
     otherComments: (document.getElementById('otherComments') as HTMLTextAreaElement).value,
   };
 
@@ -70,6 +98,7 @@ form.addEventListener('submit', async (e: Event) => {
         </div>
       `;
       form.reset();
+      otherImprovementContainer.classList.add('hidden');
     } else {
       result.innerHTML = `
         <div class="bg-red-50 border-2 border-red-400 rounded-lg p-6">
