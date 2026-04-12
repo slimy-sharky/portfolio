@@ -3,6 +3,9 @@ import howToMakeStickySlime1Url from '../assets/how_to_make_sticky_slime_1.webp'
 import howToMakeStickySlime2Url from '../assets/how_to_make_sticky_slime_2.webp';
 import howToMakeStickySlime3Url from '../assets/how_to_make_sticky_slime_3.webp';
 import howToMakeStickySlime4Url from '../assets/how_to_make_sticky_slime_4.webp';
+import bucketUrl from '../assets/bucket.webp';
+import bottleUrl from '../assets/bottle.webp';
+import bakingSodaUrl from '../assets/baking_soda.webp';
 
 const stickySlimeMixImages = document.querySelectorAll<HTMLImageElement>('.sticky-slime-mix');
 stickySlimeMixImages.forEach(image => {
@@ -28,6 +31,21 @@ if (howToMakeStickySlime3Image !== null) {
 const howToMakeStickySlime4Image = document.getElementById('how-to-make-sticky-slime-4') as HTMLImageElement;
 if (howToMakeStickySlime4Image !== null) {
   howToMakeStickySlime4Image.src = howToMakeStickySlime4Url;
+}
+
+const bucketImage = document.getElementById('bucket') as HTMLImageElement;
+if (bucketImage !== null) {
+  bucketImage.src = bucketUrl;
+}
+
+const bottleImage = document.getElementById('bottle') as HTMLImageElement;
+if (bottleImage !== null) {
+  bottleImage.src = bottleUrl;
+}
+
+const bakingSodaImage = document.getElementById('baking-soda') as HTMLImageElement;
+if (bakingSodaImage !== null) {
+  bakingSodaImage.src = bakingSodaUrl;
 }
 
 // Windowインターフェースを拡張して、copyLinkを登録できるようにする
